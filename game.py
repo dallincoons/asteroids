@@ -70,7 +70,7 @@ class Game(arcade.Window):
 
         self.ship = Ship()
 
-
+        self.game_over = False
 
 
         # TODO: declare anything here you need the game class to track
@@ -84,6 +84,11 @@ class Game(arcade.Window):
         # clear the screen to begin drawing
         arcade.start_render()
 
+        if self.game_over == True:
+            arcade.draw_text("YOU LOSE :(", 200, 400, arcade.color.WHITE, 70)
+            return
+
+
         for asteroid in self.asteroids:
             asteroid.draw()
 
@@ -94,6 +99,7 @@ class Game(arcade.Window):
             self.ship.draw()
         else:
             self.ship.die()
+            self.game_over = True
 
         self.win()
 

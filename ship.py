@@ -64,8 +64,7 @@ class Ship(FlyingObject):
     def die(self):
         if not self.alive:
             self.draw()
-            # arcade.play_sound(self.explosion_sound)
-            arcade.draw_text("YOU LOSE :(", self.center.x, self.center.x, arcade.color.WHITE, 30)
+            arcade.play_sound(self.explosion_sound)
             self.velocity = Velocity(0, 0)
 
 
