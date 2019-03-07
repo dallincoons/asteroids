@@ -85,7 +85,7 @@ class Game(arcade.Window):
         arcade.start_render()
 
         if self.game_over == True:
-            arcade.draw_text("YOU LOSE :(", 200, 400, arcade.color.WHITE, 70)
+            arcade.draw_text("YOU LOSE :(", 100, 300, arcade.color.WHITE, 70)
             return
 
 
