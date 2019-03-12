@@ -39,11 +39,12 @@ class Asteroid(FlyingObject):
 
         x = self.center.x
         y = self.center.y
+        self.rotate()
 
         arcade.draw_texture_rectangle(x, y, self.texture.width, self.texture.height, self.texture, self.angle, alpha)
 
     @abstractmethod
-    def rotate(self, game):
+    def rotate(self):
         pass
 
     @abstractmethod

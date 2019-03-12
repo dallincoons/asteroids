@@ -14,7 +14,7 @@ class SmallAsteroid(Asteroid):
     def get_image(self):
         return "images/meteorGrey_small1.png"
 
-    def rotate(self, game):
+    def rotate(self):
         if self.angle == 360:
             self.angle = 0
         else:

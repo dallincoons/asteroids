@@ -4,6 +4,7 @@ from velocity import Velocity
 import math
 from flying_object import FlyingObject
 from laser import Laser
+from config import *
 
 class Ship(FlyingObject):
     def __init__(self):
@@ -15,6 +16,7 @@ class Ship(FlyingObject):
         self.angle = 0
         self.hit = 0
         self.gameOver = False
+        self. speed = 0
 
         self.load_image()
         self.laser_sound = arcade.sound.load_sound("sounds/laser.wav")
@@ -49,8 +51,12 @@ class Ship(FlyingObject):
         self.angle -= 1
 
     def accelarate(self):
-        self.velocity.dx = math.cos(math.radians(self.angle + 90)) * 1
-        self.velocity.dy = math.sin(math.radians(self.angle + 90)) * 1
+        if  self.speed < SHIP_MAX_THRUST:
+            self.speed += SHIP_THRUST_AMOUNT
+
+        self.velocity.dx = math.cos(math.radians(self.angle + 90)) * self.speed
+        self.velocity.dy = math.sin(math.radians(self.angle + 90)) * self.speed
+
 
     def decelerate(self):
         self.velocity.dx = 0
