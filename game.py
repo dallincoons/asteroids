@@ -119,9 +119,7 @@ class Game(arcade.Window):
                 if (abs(self.ship.center.x - asteroid.center.x) < too_close and
                         abs(self.ship.center.y - asteroid.center.y) < too_close):
                     # its a hit!
-                    self.ship.hit +=1
-                    if self.ship.hit >= 3:
-                        self.ship.alive = False
+                    self.ship.handle_collision()
                     asteroid.alive = False
                     asteroid.break_apart(self)
 

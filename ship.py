@@ -43,12 +43,12 @@ class Ship(FlyingObject):
     def rotateLeft(self):
         if (self.angle > 360):
             self.angle = 0
-        self.angle += 1
+        self.angle += SHIP_TURN_AMOUNT
 
     def rotateRight(self):
         if (self.angle < -360):
             self.angle = 0
-        self.angle -= 1
+        self.angle -= SHIP_TURN_AMOUNT
 
     def accelarate(self):
         if  self.speed < SHIP_MAX_THRUST:
@@ -73,5 +73,9 @@ class Ship(FlyingObject):
             arcade.play_sound(self.explosion_sound)
             self.velocity = Velocity(0, 0)
 
+    def handle_collision(self):
+        self.hit +=1
+        if self.hit >= 3:
+            self.alive = False
 
 
