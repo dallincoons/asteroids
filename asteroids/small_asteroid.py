@@ -2,6 +2,7 @@ from asteroids.asteroid import Asteroid
 from point import Point
 from velocity import Velocity
 import random
+from config import *
 
 class SmallAsteroid(Asteroid):
     def __init__(self):
@@ -18,7 +19,7 @@ class SmallAsteroid(Asteroid):
         if self.angle == 360:
             self.angle = 0
         else:
-            self.angle = self.angle + 5
+            self.angle = self.angle + SMALL_ROCK_SPIN
 
     def break_apart(self, game):
         self.alive = False

@@ -4,14 +4,16 @@ from velocity import Velocity
 import random
 from asteroids.medium_asteroid import MediumAsteroid
 from asteroids.small_asteroid import SmallAsteroid
+from config import *
 
 class LargeAsteroid(Asteroid):
     def __init__(self):
         super().__init__()
         self.center = Point(500,300)
-        self.velocity = Velocity(random.choice([-1.5, 1.5]), random.choice([-1.5, 1.5]))
+        self.velocity = Velocity(random.choice([-BIG_ROCK_SPEED, BIG_ROCK_SPEED]), random.choice([-BIG_ROCK_SPEED, BIG_ROCK_SPEED]))
         self.angle = 10
         self.alive = True
+        self.radius = 15
 
     def get_image(self):
         return "images/meteorGrey_big1.png"
@@ -20,7 +22,7 @@ class LargeAsteroid(Asteroid):
         if self.angle == 360:
             self.angle = 0
         else:
-            self.angle = self.angle + 1
+            self.angle = self.angle + BIG_ROCK_SPIN
 
     def break_apart(self, game):
         if not self.alive:

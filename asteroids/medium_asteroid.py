@@ -3,6 +3,7 @@ from asteroids.small_asteroid import SmallAsteroid
 from point import Point
 from velocity import Velocity
 import random
+from config import *
 
 class MediumAsteroid(Asteroid):
     def __init__(self):
@@ -19,7 +20,7 @@ class MediumAsteroid(Asteroid):
         if self.angle == 360:
             self.angle = 0
         else:
-            self.angle = self.angle - 2
+            self.angle = self.angle + MEDIUM_ROCK_SPIN
 
     def break_apart(self, game):
         if not self.alive:

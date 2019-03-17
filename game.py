@@ -44,10 +44,8 @@ class Game(arcade.Window):
 
         self.ship = Ship()
 
-        self.game_over = False
-
-
-        # TODO: declare anything here you need the game class to track
+        self.lost = False
+        self.won = False
 
     def on_draw(self):
         """
@@ -58,10 +56,9 @@ class Game(arcade.Window):
         # clear the screen to begin drawing
         arcade.start_render()
 
-        if self.game_over == True:
+        if self.lost == True:
             arcade.draw_text("YOU LOSE :(", 100, 300, arcade.color.WHITE, 70)
             return
-
 
         for asteroid in self.asteroids:
             asteroid.draw()
@@ -73,9 +70,9 @@ class Game(arcade.Window):
             self.ship.draw()
         else:
             self.ship.die()
-            self.game_over = True
+            self.lost = True
 
-        self.win()
+        self.check_win()
 
     def update(self, delta_time):
         """
@@ -135,9 +132,13 @@ class Game(arcade.Window):
             if not asteroid.alive:
                 self.asteroids.remove(asteroid)
 
-    def win(self):
+    def check_win(self):
         if len(self.asteroids) <= 0:
+            if self.won == False:
+                arcade.play_sound(arcade.sound.load_sound("sounds/victory.wav"))
             arcade.draw_text("YOU WIN!!", 200, 300, arcade.color.WHITE, 70)
+            self.won = True
+
 
     def check_keys(self):
         """
